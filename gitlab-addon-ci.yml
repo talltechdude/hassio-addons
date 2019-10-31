@@ -1,0 +1,25 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+- build
+
+before_script:
+  - echo "${CI_REGISTRY_PASSWORD}" | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
+
+build:
+  stage: build
+  script:
+    - VERSION="${CI_COMMIT_TAG#v}"
+    - VERSION="${VERSION:-${CI_COMMIT_SHA:0:7}}"
+    - IMAGE_TAG="${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}:${VERSION}"
+    - |
+      docker build \
+        --build-arg "BUILD_DATE=$(date +"%Y-%m-%dT%H:%M:%SZ")" \
+        --build-arg "BUILD_ARCH=${ADDON_ARCH}" \
+        --build-arg "BUILD_REF=${CI_COMMIT_SHA}" \
+        --build-arg "BUILD_VERSION=${VERSION}" \
+        --tag $IMAGE_TAG .
+    - docker push $IMAGE_TAG
