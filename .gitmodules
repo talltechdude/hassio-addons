@@ -1,0 +1,3 @@
+[submodule "vouch"]
+	path = vouch
+	url = git@gitlab.com:talltechdude/addon-vouch.git
