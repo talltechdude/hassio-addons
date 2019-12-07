@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# TallTechDude Hass.io Add-ons: Vouch Proxy
+# Runs the Vouch Proxy Server
+# ==============================================================================
+
+export VOUCH_ROOT="/opt"
+export VOUCH_CONFIG="/data/config.yml"
+
+# Run the Vouch server
+bashio::log.info 'Starting the Vouch Proxy Server...'
+#cd /data || bashio::exit.nok
+exec /opt/vouch-proxy || bashio::exit.nok
