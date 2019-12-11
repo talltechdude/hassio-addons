@@ -15,11 +15,12 @@ build:
     - VERSION="${CI_COMMIT_TAG#v}"
     - VERSION="${VERSION:-${CI_COMMIT_SHA:0:7}}"
     - IMAGE_TAG="${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}:${VERSION}"
+    - BUILD_DIR="${ADDON_TARGET:-.}"
     - |
       docker build \
         --build-arg "BUILD_DATE=$(date +"%Y-%m-%dT%H:%M:%SZ")" \
         --build-arg "BUILD_ARCH=${ADDON_ARCH}" \
         --build-arg "BUILD_REF=${CI_COMMIT_SHA}" \
         --build-arg "BUILD_VERSION=${VERSION}" \
-        --tag $IMAGE_TAG .
+        --tag $IMAGE_TAG $BUILD_DIR
     - docker push $IMAGE_TAG
