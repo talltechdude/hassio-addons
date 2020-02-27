@@ -1,6 +1,6 @@
 {
   "name": "Vouch Auth Proxy",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "slug": "vouch",
   "description": "An SSO and OAuth login solution for Nginx using the auth_request module or Nginx Proxy Manager",
   "url": "https://gitlab.com/talltechdude/addon-vouch",
