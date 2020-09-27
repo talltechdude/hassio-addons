@@ -1,6 +1,6 @@
 {
   "name": "Vouch Auth Proxy",
-  "version": "0.4.5",
+  "version": "0.5.0",
   "slug": "vouch",
   "description": "An SSO and OAuth login solution for Nginx using the auth_request module or Nginx Proxy Manager",
   "url": "https://gitlab.com/talltechdude/addon-vouch",
@@ -13,9 +13,9 @@
     "9090/tcp": null
   },
   "options": {
-    "domain": "hassio.local",
-    "homeassistant_url": "https://home.hassio.local",
-    "vouch_url": "https://vouch.hassio.local",
+    "domain": "homeassistant.io",
+    "homeassistant_url": "https://home.homeassistant.io",
+    "vouch_url": "https://vouch.homeassistant.io",
     "jwt_max_age": 10080,
     "log_level": "info"
   },
